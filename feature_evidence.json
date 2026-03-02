@@ -1,0 +1,193 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-mobile-first-react-pwa-with-a-clean-agriculture-themed-visual-design-using-earthy-greens-warm-ambers-and-soil-browns-use-clear-iconography-large-touch-targets-and-a-card-based-layout-optimized-for-low-end-mobile-screens-apply-this-theme-consistently-across-all-screens",
+      "featureTitle": "Create a mobile-first React PWA with a clean, agriculture-themed visual design using earthy greens, warm ambers, and soil browns. Use clear iconography, large touch targets, and a card-based layout optimized for low-end mobile screens. Apply this theme consistently across all screens.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-camera-capture-screen-that-allows-farmers-to-take-a-photo-or-upload-an-image-of-a-crop-leaf-using-the-device-camera-or-file-picker-display-a-preview-of-the-captured-image-before-analysis",
+      "featureTitle": "Implement a camera capture screen that allows farmers to take a photo or upload an image of a crop leaf using the device camera or file picker. Display a preview of the captured image before analysis.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CameraCapture.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-integrate-tensorflow-js-tfjs-in-the-frontend-to-run-an-on-device-mobilenetv2-based-model-for-crop-disease-detection-use-a-mock-demo-model-with-placeholder-predictions-if-no-real-tflite-model-is-bundled-clearly-labeling-it-as-a-demo-show-a-confidence-score-with-each-prediction-cache-the-model-using-a-service-worker-so-it-loads-offline-after-first-visit",
+      "featureTitle": "Integrate TensorFlow.js (tfjs) in the frontend to run an on-device MobileNetV2-based model for crop disease detection. Use a mock/demo model with placeholder predictions if no real .tflite model is bundled, clearly labeling it as a demo. Show a confidence score with each prediction. Cache the model using a Service Worker so it loads offline after first visit.",
+      "files": [
+        "frontend/public/service-worker.js",
+        "frontend/src/pages/CameraCapture.tsx",
+        "frontend/src/utils/tfjs-model.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-after-disease-detection-display-a-results-screen-showing-detected-crop-type-disease-name-confidence-score-organic-treatment-options-chemical-treatment-options-fertilizer-recommendations-pesticide-recommendations-and-prevention-tips-source-this-data-from-a-static-json-lookup-table-keyed-by-disease-name",
+      "featureTitle": "After disease detection, display a results screen showing: detected crop type, disease name, confidence score, organic treatment options, chemical treatment options, fertilizer recommendations, pesticide recommendations, and prevention tips. Source this data from a static JSON lookup table keyed by disease name.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/data/disease-recommendations.json",
+        "frontend/src/pages/Results.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-language-selector-allowing-the-user-to-switch-the-ui-between-english-kannada-hindi-and-telugu-store-the-selected-language-in-localstorage-provide-translated-strings-for-all-ui-labels-buttons-and-recommendation-content-using-a-simple-i18n-json-file-per-language",
+      "featureTitle": "Implement a language selector allowing the user to switch the UI between English, Kannada, Hindi, and Telugu. Store the selected language in localStorage. Provide translated strings for all UI labels, buttons, and recommendation content using a simple i18n JSON file per language.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/LanguageSelector.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/contexts/LanguageContext.tsx",
+        "frontend/src/i18n/en.json",
+        "frontend/src/i18n/hi.json",
+        "frontend/src/i18n/kn.json",
+        "frontend/src/i18n/te.json"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-voice-guidance-using-the-web-speech-api-speechsynthesis-after-disease-analysis-automatically-read-out-the-disease-name-top-organic-treatment-and-a-prevention-tip-in-the-user-s-selected-language-provide-a-play-stop-button-on-the-results-screen-to-replay-or-stop-the-voice-output",
+      "featureTitle": "Add voice guidance using the Web Speech API (SpeechSynthesis). After disease analysis, automatically read out the disease name, top organic treatment, and a prevention tip in the user's selected language. Provide a play/stop button on the results screen to replay or stop the voice output.",
+      "files": [
+        "frontend/src/pages/Results.tsx",
+        "frontend/src/utils/speech-synthesis.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-integrate-the-openweathermap-api-on-the-frontend-using-a-public-demo-api-key-placeholder-to-fetch-current-weather-for-the-user-s-region-display-a-disease-risk-alert-banner-on-the-home-screen-when-conditions-high-humidity-warm-temperature-indicate-elevated-fungal-disease-risk-cache-the-last-fetched-weather-data-in-localstorage-for-offline-display",
+      "featureTitle": "Integrate the OpenWeatherMap API on the frontend (using a public demo API key placeholder) to fetch current weather for the user's region. Display a disease risk alert banner on the home screen when conditions (high humidity + warm temperature) indicate elevated fungal disease risk. Cache the last fetched weather data in localStorage for offline display.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/WeatherRiskBanner.tsx",
+        "frontend/src/pages/Home.tsx",
+        "frontend/src/utils/weather-api.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-prediction-history-screen-in-the-frontend-that-displays-the-farmer-s-past-scans-stored-in-the-backend-each-history-item-should-show-the-crop-type-disease-name-confidence-score-and-date-allow-the-user-to-tap-a-history-item-to-view-the-full-results-again",
+      "featureTitle": "Add a Prediction History screen in the frontend that displays the farmer's past scans (stored in the backend). Each history item should show the crop type, disease name, confidence score, and date. Allow the user to tap a history item to view the full results again.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/History.tsx",
+        "frontend/src/pages/Results.tsx",
+        "frontend/src/utils/session.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-offline-first-service-worker-using-workbox-or-a-custom-service-worker-script-pre-cache-the-app-shell-html-css-js-model-files-cache-api-responses-with-a-stale-while-revalidate-strategy-display-an-offline-indicator-banner-when-the-network-is-unavailable",
+      "featureTitle": "Implement an offline-first Service Worker using Workbox or a custom service worker script. Pre-cache the app shell (HTML, CSS, JS, model files). Cache API responses with a stale-while-revalidate strategy. Display an offline indicator banner when the network is unavailable.",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.json",
+        "frontend/public/service-worker.js",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/OfflineIndicator.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "Tomato Late Blight": {
+    "cropType": "Tomato",
+    "organicTreatments": [
+      "Apply copper-based fungicide (Bordeaux mixture) every 7-10 days",
+      "Spray neem oil solution (2%) on affected leaves",
+      "Use baking soda spray (1 tbsp per liter of water)",
+      "Remove and destroy infected plant parts immediately",
+      "Apply compost tea to boost plant immunity"
+    ],
+    "chemicalTreatments": [
+      "Mancozeb 75% WP at 2.5 g/liter water",
+      "Metalaxyl + Mancozeb (Ridomil Gold) at 2 g/liter",
+      "Chlorothalonil 75% WP at 2 g/liter water",
+      "Cymoxanil + Mancozeb at 2.5 g/liter water"
+    ],
+    "fertilizers": [
+      "Apply potassium-rich fertilizer (K2O) to strengthen cell walls",
+      "Use calcium nitrate to improve disease resistance",
+      "Reduce nitrogen fertilization to avoid lush growth",
+      "Apply phosphorus fertilizer for root strength"
+    ],
+    "pesticides": [
+      "Avoid broad-spectrum pesticides that kill beneficial organisms",
+      "Use targeted fungicides only when disease pressure is high",
+      "Rotate fungicide classes to prevent resistance"
+    ],
+    "preventionTips": [
+      "Plant resistant tomato varieties (e.g., Mountain Magic, Defiant)",
+      "Ensure proper plant spacing for air circulation",
+      "Water at the base of plants, avoid wetting leaves",
+      "Rotate crops — do not plant tomatoes in the same spot for 3 years",
+      "Remove plant debris after harvest to reduce disease inoculum",
+      "Monitor weather forecasts — apply preventive fungicide before rainy periods"
+    ]
+  },
+  "Rice Blast": {
+    "cropType": "Rice",
+    "organicTreatments": [
+      "Apply Trichoderma viride biocontrol agent at 2.5 kg/ha",
+      "Spray pseudomonas fluorescens solution (10 g/liter)",
+      "Use silicon-rich amendments to strengthen leaf tissue",
+      "Apply neem cake to soil at 250 kg/ha",
+      "Spray garlic extract solution on affected areas"
+    ],
+    "chemicalTreatments": [
+      "Tricyclazole 75% WP at 0.6 g/liter water",
+      "Isoprothiolane 40% EC at 1.5 ml/liter water",
+      "Carbendazim 50% WP at 1 g/liter water",
+      "Propiconazole 25% EC at 1 ml/liter water"
+    ],
+    "fertilizers": [
+      "Apply silicon fertilizer (calcium silicate) at 200 kg/ha",
+      "Reduce nitrogen application — excess N increases blast severity",
+      "Split nitrogen application into 3-4 doses",
+      "Apply potassium at recommended rates to improve resistance"
+    ],
+    "pesticides": [
+      "Avoid excessive pesticide use that disrupts natural enemies",
+      "Use systemic fungicides for severe infections",
+      "Apply fungicides at panicle initiation stage for neck blast prevention"
+    ],
+    "preventionTips": [
+      "Use blast-resistant rice varieties (IR64, Swarna Sub1)",
+      "Treat seeds with Carbendazim before sowing",
+      "Maintain proper water management — avoid water stress",
+      "Avoid late planting during high-risk periods",
+      "Monitor fields regularly, especially during humid weather",
+      "Maintain field hygiene — remove infected stubble after harvest"
+    ]
+  },
+  "Wheat Rust": {
+    "cropType": "Wheat",
+    "organicTreatments": [
+      "Apply sulfur dust (300 mesh) at 20-25 kg/ha",
+      "Spray neem oil (3%) with emulsifier",
+      "Use Bacillus subtilis biocontrol spray",
+      "Apply wood ash around plant base",
+      "Remove and burn infected plant material"
+    ],
+    "chemicalTreatments": [
+      "Propiconazole 25% EC at 1 ml/liter water",
+      "Tebuconazole 25.9% EC at 1 ml/liter water",
+      "Mancozeb 75% WP at 2.5 g/liter water",
+      "Hexaconazole 5% EC at 2 ml/liter water"
+    ],
+    "fertilizers": [
+      "Avoid excess nitrogen which promotes susceptibility",
+      "Apply balanced NPK fertilizer as per soil test",
+      "Use potassium sulfate to improve disease resistance",
+      "Apply micronutrients (zinc, boron) for plant health"
+    ],
+    "pesticides": [
+      "Apply systemic fungicides at first sign of rust",
+      "Use triazole fungicides for effective rust control",
+      "Rotate between fungicide groups to prevent resistance"
+    ],
+    "preventionTips": [
+      "Plant rust-resistant wheat varieties",
+      "Sow at recommended time to avoid peak rust season",
+      "Ensure proper plant spacing for air circulation",
+      "Monitor fields weekly during susceptible growth stages",
+      "Remove volunteer wheat plants that harbor rust",
+      "Apply preventive fungicide spray before disease onset in high-risk areas"
+    ]
+  },
+  "Cotton Bollworm": {
+    "cropType": "Cotton",
+    "organicTreatments": [
+      "Release Trichogramma parasitoids at 1.5 lakh/ha",
+      "Apply Bacillus thuringiensis (Bt) spray at 2 g/liter",
+      "Use Nuclear Polyhedrosis Virus (NPV) at 250 LE/ha",
+      "Install pheromone traps at 5/ha for monitoring",
+      "Spray neem seed kernel extract (NSKE) 5%"
+    ],
+    "chemicalTreatments": [
+      "Emamectin benzoate 5% SG at 0.4 g/liter water",
+      "Spinosad 45% SC at 0.3 ml/liter water",
+      "Chlorpyrifos 20% EC at 2.5 ml/liter water",
+      "Indoxacarb 14.5% SC at 1 ml/liter water"
+    ],
+    "fertilizers": [
+      "Apply balanced NPK (120:60:60 kg/ha) for healthy growth",
+      "Use foliar spray of micronutrients during flowering",
+      "Apply boron at 1 kg/ha to improve boll setting",
+      "Avoid excess nitrogen that promotes vegetative growth"
+    ],
+    "pesticides": [
+      "Rotate insecticide classes to prevent resistance",
+      "Avoid spraying during flowering to protect pollinators",
+      "Use selective insecticides to preserve natural enemies",
+      "Apply pesticides in early morning or evening"
+    ],
+    "preventionTips": [
+      "Plant Bt cotton varieties for built-in resistance",
+      "Maintain refuge crops (non-Bt cotton) as per guidelines",
+      "Destroy crop residues after harvest",
+      "Deep plowing to expose pupae to sunlight",
+      "Monitor with pheromone traps from early season",
+      "Intercrop with maize or sorghum as trap crops"
+    ]
+  },
+  "Potato Early Blight": {
+    "cropType": "Potato",
+    "organicTreatments": [
+      "Apply copper hydroxide spray (2 g/liter) every 10 days",
+      "Use compost tea spray to boost plant immunity",
+      "Apply neem oil (2%) with soap emulsifier",
+      "Remove lower infected leaves to slow spread",
+      "Spray diluted milk (1:10 ratio) as antifungal"
+    ],
+    "chemicalTreatments": [
+      "Mancozeb 75% WP at 2.5 g/liter water",
+      "Chlorothalonil 75% WP at 2 g/liter water",
+      "Azoxystrobin 23% SC at 1 ml/liter water",
+      "Difenoconazole 25% EC at 0.5 ml/liter water"
+    ],
+    "fertilizers": [
+      "Apply calcium-rich fertilizer to strengthen cell walls",
+      "Use balanced NPK with emphasis on potassium",
+      "Apply micronutrients (zinc, manganese) for plant health",
+      "Avoid excess nitrogen fertilization"
+    ],
+    "pesticides": [
+      "Apply preventive fungicide sprays during humid weather",
+      "Use systemic fungicides for established infections",
+      "Alternate between contact and systemic fungicides"
+    ],
+    "preventionTips": [
+      "Plant certified disease-free seed potatoes",
+      "Use resistant varieties where available",
+      "Ensure proper drainage to reduce humidity",
+      "Avoid overhead irrigation — use drip irrigation",
+      "Rotate crops with non-solanaceous crops for 3 years",
+      "Harvest at proper maturity to avoid storage diseases"
+    ]
+  },
+  "Maize Leaf Blight": {
+    "cropType": "Maize",
+    "organicTreatments": [
+      "Apply Trichoderma harzianum at 2.5 kg/ha",
+      "Spray neem oil (2%) solution on affected plants",
+      "Use copper-based fungicide spray",
+      "Remove and destroy severely infected plants",
+      "Apply compost to improve soil health"
+    ],
+    "chemicalTreatments": [
+      "Mancozeb 75% WP at 2.5 g/liter water",
+      "Propiconazole 25% EC at 1 ml/liter water",
+      "Tebuconazole 25.9% EC at 1 ml/liter water",
+      "Azoxystrobin 23% SC at 1 ml/liter water"
+    ],
+    "fertilizers": [
+      "Apply balanced NPK fertilizer as per soil test",
+      "Use potassium fertilizer to improve disease resistance",
+      "Apply zinc sulfate at 25 kg/ha for micronutrient balance",
+      "Avoid excess nitrogen application"
+    ],
+    "pesticides": [
+      "Apply fungicides at early disease stages for best results",
+      "Use systemic fungicides for severe infections",
+      "Rotate fungicide classes to prevent resistance"
+    ],
+    "preventionTips": [
+      "Plant resistant maize hybrids",
+      "Ensure proper plant spacing for air circulation",
+      "Avoid late planting in high-risk areas",
+      "Remove crop debris after harvest",
+      "Practice crop rotation with legumes",
+      "Monitor fields regularly during humid weather"
+    ]
+  },
+  "Healthy": {
+    "cropType": "Unknown",
+    "organicTreatments": [
+      "Continue regular monitoring of crop health",
+      "Apply compost or organic matter to maintain soil health",
+      "Use neem-based preventive sprays monthly"
+    ],
+    "chemicalTreatments": [
+      "No chemical treatment needed for healthy plants",
+      "Apply preventive fungicide only if disease pressure is high in the region"
+    ],
+    "fertilizers": [
+      "Maintain balanced NPK fertilization as per crop requirement",
+      "Apply micronutrients based on soil test results",
+      "Use organic compost to improve soil structure"
+    ],
+    "pesticides": [
+      "No pesticide treatment needed",
+      "Use preventive measures to maintain plant health"
+    ],
+    "preventionTips": [
+      "Continue good agricultural practices",
+      "Monitor crops weekly for early disease signs",
+      "Maintain proper irrigation and drainage",
+      "Practice crop rotation to prevent disease buildup",
+      "Keep field clean of weeds and debris"
+    ]
+  }
+}

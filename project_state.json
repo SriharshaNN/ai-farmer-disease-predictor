@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "AI-Based Farmer Disease Predictor mobile web app (PWA) that allows farmers to photograph crop leaves, detect crop type and disease using on-device TFLite deep learning, provide treatment/fertilizer/pesticide recommendations, support Kannada/Hindi/Telugu languages with voice guidance, work offline, and integrate weather data for disease risk prediction.",
+  "architectural_notes": [
+    "Frontend: React + TypeScript PWA with Vite, Tailwind CSS, mobile-first design",
+    "AI inference: TensorFlow.js / ONNX Runtime Web for in-browser offline inference using MobileNetV2/EfficientNet-Lite model",
+    "Offline: Service Worker caches TFLite model and app shell; IndexedDB stores predictions and syncs when online",
+    "Backend: Motoko on Internet Computer for disease history, multilingual content, and treatment data",
+    "Weather risk: OpenWeatherMap API called from frontend; last 7 days cached locally for offline use",
+    "Target model size: under 15MB (int8 quantized) for 2G/3G rural network compatibility"
+  ],
+  "known_issues": [
+    "Actual CNN model training requires external Python/TensorFlow work and labeled Indian field photo dataset",
+    "PlantVillage dataset is lab-controlled; real field accuracy may be lower without custom field photo retraining"
+  ],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- App logo with a stylized green leaf and magnifying glass icon on a warm amber circular background (farmguard-logo.dim_256x256.png)\n- Home screen hero illustration of a farmer holding a smartphone over a crop field with lush green plants under a clear sky (hero-farmer.dim_800x400.png)\n- Placeholder crop leaf image showing a green leaf with brown disease spots for demo mode (demo-leaf.dim_400x400.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-mobile-first-react-pwa-with-a-clean-agriculture-themed-visual-design-using-earthy-greens-warm-ambers-and-soil-browns-use-clear-iconography-large-touch-targets-and-a-card-based-layout-optimized-for-low-end-mobile-screens-apply-this-theme-consistently-across-all-screens",
+      "title": "Create a mobile-first React PWA with a clean, agriculture-themed visual design using earthy greens, warm ambers, and soil browns. Use clear iconography, large touch targets, and a card-based layout optimized for low-end mobile screens. Apply this theme consistently across all screens.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-camera-capture-screen-that-allows-farmers-to-take-a-photo-or-upload-an-image-of-a-crop-leaf-using-the-device-camera-or-file-picker-display-a-preview-of-the-captured-image-before-analysis",
+      "title": "Implement a camera capture screen that allows farmers to take a photo or upload an image of a crop leaf using the device camera or file picker. Display a preview of the captured image before analysis.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-tensorflow-js-tfjs-in-the-frontend-to-run-an-on-device-mobilenetv2-based-model-for-crop-disease-detection-use-a-mock-demo-model-with-placeholder-predictions-if-no-real-tflite-model-is-bundled-clearly-labeling-it-as-a-demo-show-a-confidence-score-with-each-prediction-cache-the-model-using-a-service-worker-so-it-loads-offline-after-first-visit",
+      "title": "Integrate TensorFlow.js (tfjs) in the frontend to run an on-device MobileNetV2-based model for crop disease detection. Use a mock/demo model with placeholder predictions if no real .tflite model is bundled, clearly labeling it as a demo. Show a confidence score with each prediction. Cache the model using a Service Worker so it loads offline after first visit.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-disease-detection-display-a-results-screen-showing-detected-crop-type-disease-name-confidence-score-organic-treatment-options-chemical-treatment-options-fertilizer-recommendations-pesticide-recommendations-and-prevention-tips-source-this-data-from-a-static-json-lookup-table-keyed-by-disease-name",
+      "title": "After disease detection, display a results screen showing: detected crop type, disease name, confidence score, organic treatment options, chemical treatment options, fertilizer recommendations, pesticide recommendations, and prevention tips. Source this data from a static JSON lookup table keyed by disease name.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-language-selector-allowing-the-user-to-switch-the-ui-between-english-kannada-hindi-and-telugu-store-the-selected-language-in-localstorage-provide-translated-strings-for-all-ui-labels-buttons-and-recommendation-content-using-a-simple-i18n-json-file-per-language",
+      "title": "Implement a language selector allowing the user to switch the UI between English, Kannada, Hindi, and Telugu. Store the selected language in localStorage. Provide translated strings for all UI labels, buttons, and recommendation content using a simple i18n JSON file per language.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-voice-guidance-using-the-web-speech-api-speechsynthesis-after-disease-analysis-automatically-read-out-the-disease-name-top-organic-treatment-and-a-prevention-tip-in-the-user-s-selected-language-provide-a-play-stop-button-on-the-results-screen-to-replay-or-stop-the-voice-output",
+      "title": "Add voice guidance using the Web Speech API (SpeechSynthesis). After disease analysis, automatically read out the disease name, top organic treatment, and a prevention tip in the user's selected language. Provide a play/stop button on the results screen to replay or stop the voice output.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-the-openweathermap-api-on-the-frontend-using-a-public-demo-api-key-placeholder-to-fetch-current-weather-for-the-user-s-region-display-a-disease-risk-alert-banner-on-the-home-screen-when-conditions-high-humidity-warm-temperature-indicate-elevated-fungal-disease-risk-cache-the-last-fetched-weather-data-in-localstorage-for-offline-display",
+      "title": "Integrate the OpenWeatherMap API on the frontend (using a public demo API key placeholder) to fetch current weather for the user's region. Display a disease risk alert banner on the home screen when conditions (high humidity + warm temperature) indicate elevated fungal disease risk. Cache the last fetched weather data in localStorage for offline display.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-prediction-history-screen-in-the-frontend-that-displays-the-farmer-s-past-scans-stored-in-the-backend-each-history-item-should-show-the-crop-type-disease-name-confidence-score-and-date-allow-the-user-to-tap-a-history-item-to-view-the-full-results-again",
+      "title": "Add a Prediction History screen in the frontend that displays the farmer's past scans (stored in the backend). Each history item should show the crop type, disease name, confidence score, and date. Allow the user to tap a history item to view the full results again.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-offline-first-service-worker-using-workbox-or-a-custom-service-worker-script-pre-cache-the-app-shell-html-css-js-model-files-cache-api-responses-with-a-stale-while-revalidate-strategy-display-an-offline-indicator-banner-when-the-network-is-unavailable",
+      "title": "Implement an offline-first Service Worker using Workbox or a custom service worker script. Pre-cache the app shell (HTML, CSS, JS, model files). Cache API responses with a stale-while-revalidate strategy. Display an offline indicator banner when the network is unavailable.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Camera integration to capture crop leaf photos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "On-device TFLite/TensorFlow.js model for offline crop disease detection",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Automatic crop type detection from leaf photo",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Disease identification with confidence score",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Treatment suggestions (organic + chemical options)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Fertilizer and pesticide recommendations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Prevention tips for detected diseases",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Multilingual UI support: Kannada, Hindi, Telugu, English",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Voice guidance using Web Speech API for illiterate farmers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Offline-first PWA with Service Worker and IndexedDB caching",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Weather API integration (OpenWeatherMap) for future disease risk prediction",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Farmer history and past prediction storage",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Build a Motoko backend actor that stores farmer prediction history records. Each record should contain: a unique ID, farmer session ID, detected crop type, disease name, confidence score, timestamp, and the weather snapshot at prediction time. Expose update functions to save a new record and query functions to retrieve records by session ID.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "AI Farmer Disease Predictor",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

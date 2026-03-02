@@ -1,0 +1,128 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T05:15:55.521Z",
+  "summary": "The diff implements the majority of the requested requirements, including the Motoko backend actor, React PWA frontend with agriculture theming, camera capture, multilingual i18n, weather risk banner, offline indicator, history screen, and disease recommendations. However, several specific acceptance criteria and features appear missing or not evidenced in the diff.",
+  "missing_requirements": [
+    {
+      "id": "REQ-3",
+      "requirement": "Integrate TensorFlow.js (tfjs) in the frontend to run an on-device MobileNetV2-based model for crop disease detection. Cache the model using a Service Worker so it loads offline after first visit.",
+      "reason": "The diff references a utility file 'frontend/src/utils/tfjs-model' imported in CameraCapture.tsx but this file is not included in the diff. There is no evidence of TensorFlow.js being imported or model loading logic. The file was omitted due to truncation limits.",
+      "evidence": [
+        "frontend/src/pages/CameraCapture.tsx"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Records are stored in a stable HashMap to survive canister upgrades.",
+      "reason": "The Motoko actor uses Map.empty() from mo:core/Map but does not declare the storage as stable. There is no stable var declaration visible for predictionRecords or nextId, meaning state would not survive canister upgrades.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "savePrediction update function persists a record to stable storage.",
+      "reason": "The backend implements addPredictionRecord rather than savePrediction as specified in the acceptance criteria.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "getPredictionsBySession query returns all records for a given session ID.",
+      "reason": "The backend implements getRecordsBySessionId rather than getPredictionsBySession as specified in the acceptance criteria.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Implement an offline-first Service Worker using Workbox or a custom service worker script. Pre-cache the app shell. PWA manifest is present with app name, icons, and display standalone.",
+      "reason": "No service worker file, Workbox configuration, or PWA manifest is present in the diff. The offline indicator component exists but the underlying Service Worker infrastructure is not evidenced.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "API key is stored in a .env variable (VITE_WEATHER_API_KEY).",
+      "reason": "No .env file or reference to VITE_WEATHER_API_KEY is included in the diff. The weather-api utility file is referenced but not shown.",
+      "evidence": [
+        "frontend/src/components/WeatherRiskBanner.tsx"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Results screen with all six recommendation categories and collapsible or tabbed sections for readability on small screens.",
+      "reason": "The Results page (frontend/src/pages/Results.tsx) is listed as an added file but its content is omitted from the diff due to file limits. Cannot confirm collapsible or tabbed layout implementation.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Voice guidance using Web Speech API with automatic readout after analysis and play/stop buttons on results screen.",
+      "reason": "The Results page content is omitted from the diff. Cannot confirm SpeechSynthesis integration, automatic readout after analysis, or play/stop button implementation.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Image quality warning shown if image is too dark or blurry.",
+      "reason": "checkImageQuality is imported and called in CameraCapture.tsx with qualityWarning state but blurriness detection is not evidenced and the warning display UI is in the truncated portion of the file.",
+      "evidence": [
+        "frontend/src/pages/CameraCapture.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication provider is wrapped around the entire app, providing full login/logout functionality via InternetIdentityProvider.",
+      "reason": "User authentication or Internet Identity login is explicitly listed as a non-goal in the build request. The useInternetIdentity.ts hook and its usage in main.tsx and useActor.ts implement a full Internet Identity auth flow that was not requested.",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "getPredictionRecordById query function exposed on the backend actor allowing lookup of a single record by ID.",
+      "reason": "The build request only specifies savePrediction and getPredictionsBySession functions. A getPredictionRecordById function was added beyond the spec.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/manifest.json",
+    "frontend/public/service-worker.js",
+    "frontend/src/App.tsx",
+    "frontend/src/components/LanguageSelector.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/OfflineIndicator.tsx",
+    "frontend/src/components/WeatherRiskBanner.tsx",
+    "frontend/src/contexts/LanguageContext.tsx",
+    "frontend/src/data/disease-recommendations.json",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/i18n/en.json",
+    "frontend/src/i18n/hi.json",
+    "frontend/src/i18n/kn.json",
+    "frontend/src/i18n/te.json",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CameraCapture.tsx",
+    "frontend/src/pages/History.tsx",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/Results.tsx",
+    "frontend/src/utils/session.ts",
+    "frontend/src/utils/speech-synthesis.ts",
+    "frontend/src/utils/tfjs-model.ts",
+    "frontend/src/utils/weather-api.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

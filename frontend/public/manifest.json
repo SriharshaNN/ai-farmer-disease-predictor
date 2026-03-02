@@ -1,0 +1,26 @@
+{
+  "name": "FarmGuard AI - Crop Disease Predictor",
+  "short_name": "FarmGuard AI",
+  "description": "AI-powered crop disease detection for farmers. Identify plant diseases, get treatment recommendations, and protect your harvest.",
+  "theme_color": "#2d6a4f",
+  "background_color": "#f5f9f0",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/assets/generated/farmguard-logo.dim_256x256.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/generated/farmguard-logo.dim_256x256.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["agriculture", "health", "utilities"]
+}

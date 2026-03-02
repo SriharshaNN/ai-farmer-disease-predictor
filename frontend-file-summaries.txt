@@ -1,0 +1,5 @@
+{
+  "frontend/src/App.tsx": "Main application entry point that sets up TanStack Router with all four routes (home, scan, results, history), wraps the app in LanguageProvider and Layout via the root route, and registers the router for full TypeScript type safety including typed search params for the results route.",
+  "frontend/src/pages/History.tsx": "Prediction history page that fetches past scans from the backend using the farmer session ID, displays them as sortable cards with crop type, disease name, confidence badge, and formatted date, and navigates to the results page on tap with a friendly empty state when no records exist.",
+  "frontend/src/pages/Results.tsx": "Disease analysis results page that reads typed search params from the router (no manual casting needed), displays crop type, disease name, confidence score, voice playback controls, and five collapsible recommendation sections, while saving the prediction to the backend on mount."
+}

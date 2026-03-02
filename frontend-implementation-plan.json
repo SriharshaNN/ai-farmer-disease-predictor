@@ -1,0 +1,301 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "AI-Based Farmer Disease Predictor PWA - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a mobile-first React PWA with agriculture-themed visual design using earthy greens, warm ambers, and soil browns with consistent styling across all screens",
+      "acceptanceCriteria": [
+        "App renders correctly on mobile viewport (375px wide)",
+        "Color palette uses greens, ambers, and browns throughout",
+        "All interactive elements have minimum 44px touch targets",
+        "Consistent typography and spacing across all screens"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add agriculture-themed CSS custom properties for earthy greens, warm ambers, and soil browns. Define responsive typography scale and spacing utilities optimized for mobile-first design."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with agriculture color palette (green-leaf, amber-sun, brown-soil variants), minimum touch target sizes (44px), and mobile-first breakpoints. Configure card component defaults."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create main layout component with agriculture-themed header, navigation bar with large touch targets, and footer. Wire the generated farmguard-logo.dim_256x256.png from frontend/public/assets/generated/farmguard-logo.dim_256x256.png as the app logo in the header."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with the Layout component to apply consistent theming and navigation across all screens."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement camera capture screen allowing farmers to take or upload crop leaf photos with preview before analysis",
+      "acceptanceCriteria": [
+        "Camera access works via getUserMedia API on mobile browsers",
+        "File upload fallback available for devices without camera access",
+        "Captured image preview is shown before analysis is triggered",
+        "Image quality warning shown if image is too dark or blurry"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CameraCapture.tsx",
+          "operation": "create",
+          "description": "Create camera capture page with getUserMedia for live camera access and file input fallback. Display captured image preview in a card. Include basic quality checks (brightness threshold) and show warning banner if image is too dark. Use large touch-friendly capture button styled with agriculture theme. Wire the generated demo-leaf.dim_400x400.png from frontend/public/assets/generated/demo-leaf.dim_400x400.png as placeholder when no image is captured."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /camera pointing to CameraCapture component. Include navigation link from home screen to camera capture."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Integrate TensorFlow.js for on-device MobileNetV2-based crop disease detection with demo model, confidence scores, and offline Service Worker caching",
+      "acceptanceCriteria": [
+        "TensorFlow.js is loaded and model inference runs in the browser",
+        "Crop type and disease name are displayed after analysis",
+        "Confidence score (percentage) is shown with the result",
+        "Model is cached by Service Worker for offline use",
+        "Demo mode clearly labeled when no real model is present"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/tfjs-model.ts",
+          "operation": "create",
+          "description": "Create TensorFlow.js model loader and inference utilities. Load a demo MobileNetV2-compatible model (or mock predictions if no real model file exists). Export functions: loadModel(), predictDisease(imageElement) returning { cropType, diseaseName, confidence }. Label output as demo mode with clear disclaimer."
+        },
+        {
+          "path": "frontend/src/pages/CameraCapture.tsx",
+          "operation": "modify",
+          "description": "Integrate tfjs-model utility to analyze captured image on button press. Show loading spinner during inference. Navigate to results screen with prediction data (crop type, disease name, confidence) after analysis completes."
+        },
+        {
+          "path": "frontend/public/service-worker.js",
+          "operation": "create",
+          "description": "Implement custom Service Worker using Workbox or vanilla caching strategy. Pre-cache app shell assets (HTML, CSS, JS) and TensorFlow.js model files. Use stale-while-revalidate for runtime API caching. Register this worker in index.html or main entry point."
+        },
+        {
+          "path": "frontend/src/index.tsx",
+          "operation": "modify",
+          "description": "Register the Service Worker on app load. Add online/offline event listeners to update UI state (for offline indicator in REQ-10)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Display disease analysis results screen with crop type, disease name, confidence score, organic/chemical treatments, fertilizer/pesticide recommendations, and prevention tips from static JSON lookup",
+      "acceptanceCriteria": [
+        "Results screen shows all six recommendation categories",
+        "Data is loaded from a static JSON lookup by disease key",
+        "Each section is collapsible or tabbed for readability on small screens",
+        "Results are available offline using the local lookup table"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/data/disease-recommendations.json",
+          "operation": "create",
+          "description": "Create static JSON file with disease lookup table. Structure: { [diseaseName]: { organicTreatments: [], chemicalTreatments: [], fertilizers: [], pesticides: [], preventionTips: [] } }. Include sample entries for common crop diseases (e.g., Tomato Late Blight, Rice Blast)."
+        },
+        {
+          "path": "frontend/src/pages/Results.tsx",
+          "operation": "create",
+          "description": "Create results screen displaying crop type, disease name, and confidence score in header card. Load recommendation data from disease-recommendations.json by disease key. Render six collapsible sections (accordion or tabs) for organic treatments, chemical treatments, fertilizers, pesticides, and prevention tips. Style with agriculture theme and large touch targets."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /results pointing to Results component. Pass prediction data (crop type, disease name, confidence) via route state or URL params from camera capture page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement language selector for English, Kannada, Hindi, and Telugu with localStorage persistence and translated UI strings via i18n JSON files",
+      "acceptanceCriteria": [
+        "Language selector is accessible from the main screen and settings",
+        "All UI labels and navigation items change when language is switched",
+        "Selected language persists across page reloads via localStorage",
+        "At minimum English and one Indian language (Kannada) are fully translated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/i18n/en.json",
+          "operation": "create",
+          "description": "Create English translation JSON file with all UI labels, buttons, navigation items, and recommendation section headings."
+        },
+        {
+          "path": "frontend/src/i18n/kn.json",
+          "operation": "create",
+          "description": "Create Kannada translation JSON file with all UI labels, buttons, navigation items, and recommendation section headings."
+        },
+        {
+          "path": "frontend/src/i18n/hi.json",
+          "operation": "create",
+          "description": "Create Hindi translation JSON file with all UI labels, buttons, navigation items, and recommendation section headings."
+        },
+        {
+          "path": "frontend/src/i18n/te.json",
+          "operation": "create",
+          "description": "Create Telugu translation JSON file with all UI labels, buttons, navigation items, and recommendation section headings."
+        },
+        {
+          "path": "frontend/src/contexts/LanguageContext.tsx",
+          "operation": "create",
+          "description": "Create React context for language state. Load selected language from localStorage on mount. Provide setLanguage function that updates localStorage and context state. Export useLanguage hook and translation helper function t(key) that returns localized string from loaded JSON."
+        },
+        {
+          "path": "frontend/src/components/LanguageSelector.tsx",
+          "operation": "create",
+          "description": "Create language selector dropdown component with options for English, Kannada, Hindi, Telugu. On change, call setLanguage from LanguageContext. Style with large touch targets."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add LanguageSelector component to header navigation. Wrap Layout with LanguageContext.Provider so all child components have access to translations."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap entire app with LanguageContext.Provider at root level to enable language switching across all routes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add voice guidance using Web Speech API to read disease results in selected language with play/stop controls",
+      "acceptanceCriteria": [
+        "SpeechSynthesis reads out results automatically after analysis completes",
+        "Voice language matches the currently selected UI language",
+        "Play and Stop buttons are present on the results screen",
+        "Graceful fallback (no crash) on browsers that do not support SpeechSynthesis"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/speech-synthesis.ts",
+          "operation": "create",
+          "description": "Create Web Speech API utility functions: speakText(text, lang), stopSpeech(). Check for SpeechSynthesis support and provide graceful no-op fallback if unavailable. Map language codes (en, kn, hi, te) to appropriate voice lang parameter."
+        },
+        {
+          "path": "frontend/src/pages/Results.tsx",
+          "operation": "modify",
+          "description": "Integrate speech-synthesis utility. On results page load, automatically call speakText with disease name, top organic treatment, and prevention tip in user's selected language. Add Play and Stop buttons in results header to control voice playback. Use large touch targets styled with agriculture theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Integrate OpenWeatherMap API to fetch current weather, display disease risk alert banner when conditions indicate elevated fungal risk, and cache weather data in localStorage for offline display",
+      "acceptanceCriteria": [
+        "Weather data is fetched from OpenWeatherMap API on app load",
+        "A risk alert banner appears when humidity > 70% and temperature 20–30°C",
+        "Last known weather data is shown from localStorage when offline",
+        "API key is stored in a .env variable (VITE_WEATHER_API_KEY)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/.env.example",
+          "operation": "create",
+          "description": "Create example environment file with VITE_WEATHER_API_KEY=your_api_key_here as placeholder. Instruct developers to copy to .env.local with real key."
+        },
+        {
+          "path": "frontend/src/utils/weather-api.ts",
+          "operation": "create",
+          "description": "Create OpenWeatherMap API client. Export fetchWeather() function that calls API with VITE_WEATHER_API_KEY, returns { temperature, humidity, precipitation, weatherDescription }. Cache fetched data in localStorage with timestamp. On offline or error, return cached data from localStorage."
+        },
+        {
+          "path": "frontend/src/components/WeatherRiskBanner.tsx",
+          "operation": "create",
+          "description": "Create weather risk alert banner component. Fetch weather data on mount using weather-api utility. Show prominent banner styled with agriculture warning colors (amber/orange) when humidity > 70% and temperature 20–30°C. Display risk message in selected language using translation context."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create home page with hero section wiring the generated hero-farmer.dim_800x400.png from frontend/public/assets/generated/hero-farmer.dim_800x400.png. Include WeatherRiskBanner component at top of page. Add large touch-friendly button to navigate to camera capture. Display app description and key features in selected language."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for / (home) pointing to Home component. Set this as default landing route."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add Prediction History screen displaying past scans from backend with crop type, disease name, confidence score, and date, allowing users to tap items to view full results",
+      "acceptanceCriteria": [
+        "History screen lists all past predictions fetched from the backend",
+        "Each list item shows crop, disease, confidence, and formatted date",
+        "Tapping a history item opens the full results detail view",
+        "Empty state message shown when no history exists"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/History.tsx",
+          "operation": "create",
+          "description": "Create prediction history page. On mount, fetch prediction records from backend using getRecordsBySessionId with current farmer session ID (generate or retrieve from localStorage). Display list of prediction cards showing crop type, disease name, confidence score, and formatted timestamp. On card tap, navigate to results page with that prediction data. Show empty state message with illustration when no history records exist. Use backend interface types from backend.d.ts."
+        },
+        {
+          "path": "frontend/src/utils/session.ts",
+          "operation": "create",
+          "description": "Create session utility to generate or retrieve farmerSessionId from localStorage. Export getFarmerSessionId() that returns a unique session ID (e.g., random bigint or timestamp-based ID) and persists it for the user."
+        },
+        {
+          "path": "frontend/src/pages/Results.tsx",
+          "operation": "modify",
+          "description": "After displaying results, call backend addPredictionRecord with current prediction data (crop type, disease name, confidence, weather snapshot from localStorage, farmer session ID). Store returned record ID for future reference."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /history pointing to History component. Add navigation link in Layout to history screen."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Implement offline-first Service Worker with Workbox or custom script, pre-cache app shell, use stale-while-revalidate for API responses, and display offline indicator banner",
+      "acceptanceCriteria": [
+        "App loads and runs core features without network after first visit",
+        "Service Worker pre-caches app shell assets",
+        "Offline indicator banner is visible when navigator.onLine is false",
+        "PWA manifest is present with app name, icons, and display: standalone"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/manifest.json",
+          "operation": "create",
+          "description": "Create PWA manifest with app name (FarmGuard AI), short_name, description, theme_color (earthy green), background_color (warm amber), display: standalone, start_url: /, and icons array referencing farmguard-logo.dim_256x256.png from frontend/public/assets/generated/ at multiple sizes (192x192, 512x512)."
+        },
+        {
+          "path": "frontend/public/service-worker.js",
+          "operation": "modify",
+          "description": "Enhance Service Worker (created in REQ-3) to pre-cache all app shell assets (HTML, CSS, JS bundles, manifest, generated image assets). Implement stale-while-revalidate caching strategy for runtime API requests (OpenWeatherMap, backend calls). Add install and activate event handlers."
+        },
+        {
+          "path": "frontend/src/components/OfflineIndicator.tsx",
+          "operation": "create",
+          "description": "Create offline indicator banner component that listens to window online/offline events. Display prominent banner at top of screen (above content) with offline message in selected language when navigator.onLine is false. Hide when online."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add OfflineIndicator component at the top of Layout (before header) so it appears on all screens when offline."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add <link rel='manifest' href='/manifest.json'> to HTML head. Add meta tags for theme-color and mobile viewport settings to support PWA installation."
+        }
+      ]
+    }
+  ]
+}

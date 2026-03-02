@@ -1,0 +1,297 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T05:15:55.524Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 10,
+    "implemented": 9,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a mobile-first React PWA with a clean, agriculture-themed visual design using earthy greens, warm ambers, and soil browns. Use clear iconography, large touch targets, and a card-based layout optimized for low-end mobile screens. Apply this theme consistently across all screens.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Implement an offline-first Service Worker using Workbox or a custom service worker script. Pre-cache the app shell (HTML, CSS, JS, model files). Cache API responses with a stale-while-revalidate strategy. Display an offline indicator banner when the network is unavailable.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/manifest.json",
+          "frontend/public/service-worker.js",
+          "frontend/src/components/OfflineIndicator.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/public/manifest.json",
+          "frontend/public/service-worker.js",
+          "frontend/src/components/OfflineIndicator.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement a camera capture screen that allows farmers to take a photo or upload an image of a crop leaf using the device camera or file picker. Display a preview of the captured image before analysis.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/CameraCapture.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/CameraCapture.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Integrate TensorFlow.js (tfjs) in the frontend to run an on-device MobileNetV2-based model for crop disease detection. Use a mock/demo model with placeholder predictions if no real .tflite model is bundled, clearly labeling it as a demo. Show a confidence score with each prediction. Cache the model using a Service Worker so it loads offline after first visit.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/tfjs-model.ts",
+          "frontend/src/pages/CameraCapture.tsx",
+          "frontend/public/service-worker.js",
+          "frontend/src/index.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/tfjs-model.ts",
+          "frontend/src/pages/CameraCapture.tsx",
+          "frontend/public/service-worker.js"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "After disease detection, display a results screen showing: detected crop type, disease name, confidence score, organic treatment options, chemical treatment options, fertilizer recommendations, pesticide recommendations, and prevention tips. Source this data from a static JSON lookup table keyed by disease name.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/data/disease-recommendations.json",
+          "frontend/src/pages/Results.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/data/disease-recommendations.json",
+          "frontend/src/pages/Results.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Implement a language selector allowing the user to switch the UI between English, Kannada, Hindi, and Telugu. Store the selected language in localStorage. Provide translated strings for all UI labels, buttons, and recommendation content using a simple i18n JSON file per language.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/i18n/en.json",
+          "frontend/src/i18n/kn.json",
+          "frontend/src/i18n/hi.json",
+          "frontend/src/i18n/te.json",
+          "frontend/src/contexts/LanguageContext.tsx",
+          "frontend/src/components/LanguageSelector.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/i18n/en.json",
+          "frontend/src/i18n/kn.json",
+          "frontend/src/i18n/hi.json",
+          "frontend/src/i18n/te.json",
+          "frontend/src/contexts/LanguageContext.tsx",
+          "frontend/src/components/LanguageSelector.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Add voice guidance using the Web Speech API (SpeechSynthesis). After disease analysis, automatically read out the disease name, top organic treatment, and a prevention tip in the user's selected language. Provide a play/stop button on the results screen to replay or stop the voice output.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/speech-synthesis.ts",
+          "frontend/src/pages/Results.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/speech-synthesis.ts",
+          "frontend/src/pages/Results.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Integrate the OpenWeatherMap API on the frontend (using a public demo API key placeholder) to fetch current weather for the user's region. Display a disease risk alert banner on the home screen when conditions (high humidity + warm temperature) indicate elevated fungal disease risk. Cache the last fetched weather data in localStorage for offline display.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/.env.example",
+          "frontend/src/utils/weather-api.ts",
+          "frontend/src/components/WeatherRiskBanner.tsx",
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/weather-api.ts",
+          "frontend/src/components/WeatherRiskBanner.tsx",
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Build a Motoko backend actor that stores farmer prediction history records. Each record should contain: a unique ID, farmer session ID, detected crop type, disease name, confidence score, timestamp, and the weather snapshot at prediction time. Expose update functions to save a new record and query functions to retrieve records by session ID.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a Prediction History screen in the frontend that displays the farmer's past scans (stored in the backend). Each history item should show the crop type, disease name, confidence score, and date. Allow the user to tap a history item to view the full results again.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/History.tsx",
+          "frontend/src/utils/session.ts",
+          "frontend/src/pages/Results.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/History.tsx",
+          "frontend/src/utils/session.ts",
+          "frontend/src/pages/Results.tsx",
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/demo-leaf.dim_400x400.png",
+    "frontend/public/assets/generated/farmguard-logo.dim_256x256.png",
+    "frontend/public/assets/generated/hero-farmer.dim_800x400.png",
+    "frontend/public/manifest.json",
+    "frontend/public/service-worker.js",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/LanguageSelector.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/OfflineIndicator.tsx",
+    "frontend/src/components/WeatherRiskBanner.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/contexts/LanguageContext.tsx",
+    "frontend/src/data/disease-recommendations.json",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/i18n/en.json",
+    "frontend/src/i18n/hi.json",
+    "frontend/src/i18n/kn.json",
+    "frontend/src/i18n/te.json",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CameraCapture.tsx",
+    "frontend/src/pages/History.tsx",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/Results.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/src/utils/session.ts",
+    "frontend/src/utils/speech-synthesis.ts",
+    "frontend/src/utils/tfjs-model.ts",
+    "frontend/src/utils/weather-api.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

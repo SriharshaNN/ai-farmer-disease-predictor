@@ -1,0 +1,228 @@
+{
+  "kind": "build_request",
+  "title": "AI-Based Farmer Disease Predictor PWA",
+  "projectName": "FarmGuard AI",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a mobile-first React PWA with a clean, agriculture-themed visual design using earthy greens, warm ambers, and soil browns. Use clear iconography, large touch targets, and a card-based layout optimized for low-end mobile screens. Apply this theme consistently across all screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "build a app for it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App renders correctly on mobile viewport (375px wide)",
+        "Color palette uses greens, ambers, and browns throughout",
+        "All interactive elements have minimum 44px touch targets",
+        "Consistent typography and spacing across all screens"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a camera capture screen that allows farmers to take a photo or upload an image of a crop leaf using the device camera or file picker. Display a preview of the captured image before analysis.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Allow farmers to take a photo of crop leaves"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Camera access works via getUserMedia API on mobile browsers",
+        "File upload fallback available for devices without camera access",
+        "Captured image preview is shown before analysis is triggered",
+        "Image quality warning shown if image is too dark or blurry"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Integrate TensorFlow.js (tfjs) in the frontend to run an on-device MobileNetV2-based model for crop disease detection. Use a mock/demo model with placeholder predictions if no real .tflite model is bundled, clearly labeling it as a demo. Show a confidence score with each prediction. Cache the model using a Service Worker so it loads offline after first visit.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Work offline using TensorFlow Lite model",
+          "Detect crop type automatically",
+          "Identify plant disease using deep learning"
+        ]
+      },
+      "acceptanceCriteria": [
+        "TensorFlow.js is loaded and model inference runs in the browser",
+        "Crop type and disease name are displayed after analysis",
+        "Confidence score (percentage) is shown with the result",
+        "Model is cached by Service Worker for offline use",
+        "Demo mode clearly labeled when no real model is present"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "After disease detection, display a results screen showing: detected crop type, disease name, confidence score, organic treatment options, chemical treatment options, fertilizer recommendations, pesticide recommendations, and prevention tips. Source this data from a static JSON lookup table keyed by disease name.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Suggest treatment (organic + chemical options)",
+          "Provide fertilizer and pesticide recommendations",
+          "Give prevention tips"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Results screen shows all six recommendation categories",
+        "Data is loaded from a static JSON lookup by disease key",
+        "Each section is collapsible or tabbed for readability on small screens",
+        "Results are available offline using the local lookup table"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement a language selector allowing the user to switch the UI between English, Kannada, Hindi, and Telugu. Store the selected language in localStorage. Provide translated strings for all UI labels, buttons, and recommendation content using a simple i18n JSON file per language.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Work in local languages (Kannada, Hindi, Telugu)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Language selector is accessible from the main screen and settings",
+        "All UI labels and navigation items change when language is switched",
+        "Selected language persists across page reloads via localStorage",
+        "At minimum English and one Indian language (Kannada) are fully translated"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add voice guidance using the Web Speech API (SpeechSynthesis). After disease analysis, automatically read out the disease name, top organic treatment, and a prevention tip in the user's selected language. Provide a play/stop button on the results screen to replay or stop the voice output.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Provide voice guidance for illiterate farmers"
+        ]
+      },
+      "acceptanceCriteria": [
+        "SpeechSynthesis reads out results automatically after analysis completes",
+        "Voice language matches the currently selected UI language",
+        "Play and Stop buttons are present on the results screen",
+        "Graceful fallback (no crash) on browsers that do not support SpeechSynthesis"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Integrate the OpenWeatherMap API on the frontend (using a public demo API key placeholder) to fetch current weather for the user's region. Display a disease risk alert banner on the home screen when conditions (high humidity + warm temperature) indicate elevated fungal disease risk. Cache the last fetched weather data in localStorage for offline display.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Integrate weather data to predict future disease risks"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Weather data is fetched from OpenWeatherMap API on app load",
+        "A risk alert banner appears when humidity > 70% and temperature 20–30°C",
+        "Last known weather data is shown from localStorage when offline",
+        "API key is stored in a .env variable (VITE_WEATHER_API_KEY)"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Build a Motoko backend actor that stores farmer prediction history records. Each record should contain: a unique ID, farmer session ID, detected crop type, disease name, confidence score, timestamp, and the weather snapshot at prediction time. Expose update functions to save a new record and query functions to retrieve records by session ID.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Farmer history and past prediction storage"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Motoko actor defines a DiseaseRecord type with all required fields",
+        "savePrediction update function persists a record to stable storage",
+        "getPredictionsBySession query returns all records for a given session ID",
+        "Records are stored in a stable HashMap to survive canister upgrades"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a Prediction History screen in the frontend that displays the farmer's past scans (stored in the backend). Each history item should show the crop type, disease name, confidence score, and date. Allow the user to tap a history item to view the full results again.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Farmer history and past prediction storage"
+        ]
+      },
+      "acceptanceCriteria": [
+        "History screen lists all past predictions fetched from the backend",
+        "Each list item shows crop, disease, confidence, and formatted date",
+        "Tapping a history item opens the full results detail view",
+        "Empty state message shown when no history exists"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Implement an offline-first Service Worker using Workbox or a custom service worker script. Pre-cache the app shell (HTML, CSS, JS, model files). Cache API responses with a stale-while-revalidate strategy. Display an offline indicator banner when the network is unavailable.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Offline-first PWA with Service Worker and IndexedDB caching",
+          "Work offline using TensorFlow Lite model"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App loads and runs core features without network after first visit",
+        "Service Worker pre-caches app shell assets",
+        "Offline indicator banner is visible when navigator.onLine is false",
+        "PWA manifest is present with app name, icons, and display: standalone"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in a single backend/main.mo actor file",
+    "Do not edit any files under frontend/src/hooks/ or frontend/src/components/ui",
+    "Do not integrate real AI model training — use demo/mock inference with TensorFlow.js",
+    "Weather API calls must be made from the frontend, not the backend canister",
+    "Do not use WebSockets, real-time features, or external databases"
+  ],
+  "nonGoals": [
+    "Training a real CNN model (requires external Python/TensorFlow pipeline)",
+    "Actual TFLite model file bundling (demo predictions used instead)",
+    "User authentication or Internet Identity login",
+    "Native mobile app (React Native / Flutter)",
+    "SMS or push notification features",
+    "Drone or satellite imagery integration",
+    "Marketplace or payment integration"
+  ],
+  "imageRequirements": {
+    "required": [
+      "App logo with a stylized green leaf and magnifying glass icon on a warm amber circular background (farmguard-logo.dim_256x256.png)",
+      "Home screen hero illustration of a farmer holding a smartphone over a crop field with lush green plants under a clear sky (hero-farmer.dim_800x400.png)",
+      "Placeholder crop leaf image showing a green leaf with brown disease spots for demo mode (demo-leaf.dim_400x400.png)"
+    ],
+    "edits": []
+  }
+}
